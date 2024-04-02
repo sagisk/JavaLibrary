@@ -1,5 +1,3 @@
-https://chat.openai.com/c/31b903ce-09ed-4af8-aac6-b8bca7d3b7a3
-
 Project Title: Library Management System
 
 Description:
