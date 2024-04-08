@@ -13,6 +13,7 @@ public class Book implements Comparable<Book> {
         title = t;
         authour = a;
         genre = g;
+        num_of_books = -1;
     }
 
     public void setTitle(String t) {
@@ -61,7 +62,13 @@ public class Book implements Comparable<Book> {
 
     @Override
     public String toString() {
-        return "The book " + title + " by " + authour + " is in " + genre + " genre";
+        String message = ("The book " + title + 
+                        " by " + authour + " is in "
+                        + genre + " genre.");
+        if (num_of_books < 0)
+            return message;
+        else
+            return message + "There are " + num_of_books + " copies in the Library.";
     }
 
     @Override

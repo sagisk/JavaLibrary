@@ -1,32 +1,20 @@
 package library_system.app;
 
-import java.util.Random;
+import java.util.ArrayList;
 import java.util.List;
 
 public class User {
+    // Library lib = new Library();
     private String firstName;
     private String lastName;
-    private int ID;
-    private Random rdn;
     private int numOfBooksBorrowed;
     private List<Book> booksBorrowed;
-
-    public User() {
-        rdn = new Random();
-    }
 
     public User(String n, String s) {
         firstName = n;
         lastName = s;
-        ID = new Random().nextInt(100_000_000);
         numOfBooksBorrowed = 0;
-    }
-
-    public User(String n, String s, int id) {
-        firstName = n;
-        lastName = s;
-        ID = id;
-        numOfBooksBorrowed = 0;
+        booksBorrowed = new ArrayList<>();
     }
 
     public void setFirstName(String f) {
@@ -37,6 +25,10 @@ public class User {
         lastName = l;
     }
 
+    public void setNumOfBooksBorrowed(int n) {
+        this.numOfBooksBorrowed = n;
+    }
+
     public String getFirstName() {
         return firstName;
      }
@@ -45,30 +37,32 @@ public class User {
         return lastName;
     }
 
-    public int getID() {
-        return ID;
+    public int getNumOfBooksBorrowed() {
+        return numOfBooksBorrowed;
     }
 
-    public void addBookBorrowed(Book book) {
-        numOfBooksBorrowed += 1;
+    public void addBook(Book book) {
         booksBorrowed.add(book);
     }
 
-    public boolean requestBookBorrow(Book b) {
-        Library lib = new Library();
-        boolean book_present = lib.searchBook(b);
-        return book_present;
-    }
-
-    public boolean returnBook(Book book) {
+    public void returnBook(Book book) {
         numOfBooksBorrowed -= 1;
         // delete from library should be added.
         booksBorrowed.remove(book);
-        Admin a = new Admin();
-        a.addBook(book);
+        // lib.returnBook(book);
     }
 
     public void getBookDetails(Book b) {
         System.out.println(b);
+    }
+
+    @Override
+    public String toString() {
+        String message = (
+            "User " + firstName + " " + lastName +
+            " has borrowed " + numOfBooksBorrowed +
+            " books."
+        );
+        return message;
     }
 }

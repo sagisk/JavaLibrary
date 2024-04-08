@@ -13,7 +13,7 @@ public class AuthorCatalog {
         books.add(b);
     }
 
-    public boolean isBookInLibraryCatalog(Book b) {
+    public boolean isAuthorBook(Book b) {
         return books.contains(b);
     }
 
@@ -22,7 +22,7 @@ public class AuthorCatalog {
     }
 
     public boolean isBookPresent(Book b) {
-        boolean isLibrary = isBookInLibraryCatalog(b);
+        boolean isLibrary = isAuthorBook(b);
         boolean isAvailable = isBookAvailable(b);
         return isLibrary && isAvailable;
     }
